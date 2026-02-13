@@ -2,6 +2,7 @@
 #include <string.h>
 #include <glew.h>
 #include <glfw3.h>
+#include <windows.h>
 //Dimensiones de la ventana
 const int WIDTH = 800, HEIGHT = 800;
 GLuint VAO, VBO, shader;
@@ -17,7 +18,7 @@ void main()											\n\
 gl_Position=vec4(pos.x,pos.y,pos.z,1.0f); 			\n\
 }";
 
-//Fragment Shader
+//Fragment Shader    texturas,luces y color
 //recibir Vcolor y dar de salida color
 static const char* fShader = "						\n\
 #version 330										\n\
@@ -32,9 +33,14 @@ void main()											\n\
 void CrearTriangulo()
 {
 	GLfloat vertices[] = {
-		-1.0f, -1.0f,0.0f,
-		1.0f,-1.0f, 0.0f,
-		0.0f,1.0f,0.0f
+		//rombo
+		 -0.25f,0.75f,0.0f,
+		-0.75f, 0.5f,0.0f,
+		0.5f,0.5f, 0.0f,
+
+		-0.75f,0.5f,0.0f,
+		0.5f, 0.5f,0.0f,
+		-0.25f, -0.75f,0.0f,
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
 	glBindVertexArray(VAO);//asignar VAO
@@ -104,7 +110,7 @@ void CompileShaders() {
 		printf("EL error al validar es: %s \n", eLog);
 		return;
 	}
-
+	
 
 
 }
@@ -170,13 +176,28 @@ int main()
 		glfwPollEvents();
 
 		//Limpiar la ventana
-		glClearColor(0.0f,0.0f,0.0f,1.0f);
+		float color1=0.0f, color2=0.0f, color3=0.0f; //Ejercicio
+
+		color1 = 1.0f, color2 = 0.0f, color3 = 0.0f;
+		glClearColor(color1, color2, color3, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+		Sleep(1000);
+		color1 = 0.0f, color2 = 1.0f, color3 = 0.0f;
+		glClearColor(color1, color2, color3, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		Sleep(1000);
+		color1 = 0.0f, color2 = 0.0f, color3 = 1.0f;
+		glClearColor(color1, color2, color3, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		Sleep(1000);
+
+		//glClearColor(color1,color2,color3,1.0f);
+	    //glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,3);
+		glDrawArrays(GL_TRIANGLES,0,6);
 		glBindVertexArray(0);
 
 		glUseProgram(0);

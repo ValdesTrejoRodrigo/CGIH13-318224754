@@ -33,7 +33,7 @@ int main()
 	}
 	//Obtener tamaño de Buffer
 	int BufferWidth, BufferHeight;
-	glfwGetFramebufferSize(mainWindow, &BufferWidth, &BufferHeight);
+	glfwGetFramebufferSize(mainWindow, &BufferWidth, &BufferHeight);//memoria de video,guarda por pixel que color tiene 
 
 	//asignar el contexto
 	glfwMakeContextCurrent(mainWindow);
@@ -66,7 +66,7 @@ int main()
 		glClearColor(0.0f,1.0f,0.0f,1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glfwSwapBuffers(mainWindow);
+		glfwSwapBuffers(mainWindow);//de aqui para abajo no veremos ningun cambio en la ventana
 
 	}
 
