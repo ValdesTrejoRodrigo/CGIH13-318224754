@@ -2,7 +2,10 @@
 #include <string.h>
 #include <glew.h>
 #include <glfw3.h>
-#include <windows.h>
+#include <windows.h>//para poder utilizar sleep
+#include <cstdlib>//para poder utilizar rand
+#include <ctime>// para poder utilizar time
+
 //Dimensiones de la ventana
 const int WIDTH = 800, HEIGHT = 800;
 GLuint VAO, VBO, shader;
@@ -25,7 +28,7 @@ static const char* fShader = "						\n\
 out vec4 color;										\n\
 void main()											\n\
 {													\n\
-	color = vec4(1.0f,0.0f,0.0f,1.0f);	 			\n\
+	color = vec4(1.0f,1.0f,0.5f,1.0f);	 			\n\
 }";
 
 
@@ -33,14 +36,38 @@ void main()											\n\
 void CrearTriangulo()
 {
 	GLfloat vertices[] = {
-		//rombo
-		 -0.25f,0.75f,0.0f,
-		-0.75f, 0.5f,0.0f,
-		0.5f,0.5f, 0.0f,
+		//Rombo
+		// Triángulo 1
+		-0.6f,  1.0f, 0.0f,   // Arriba
+		-1.0f,  0.6f, 0.0f,   // Izquierda
+		-0.2f,  0.6f, 0.0f,   // Derecha
 
-		-0.75f,0.5f,0.0f,
-		0.5f, 0.5f,0.0f,
-		-0.25f, -0.75f,0.0f,
+		// Triángulo 2
+		-1.0f,  0.6f, 0.0f,   // Izquierda
+		-0.2f,  0.6f, 0.0f,   // Derecha
+		-0.6f,  0.2f, 0.0f,   // Abajo
+
+		//  TRAPECIO 
+
+		// Triangulo1
+		 0.2f, -0.9f, 0.0f,
+		 0.9f, -0.9f, 0.0f,
+		 0.3f, -0.6f, 0.0f,
+
+		 // Triángulo 2
+		  0.9f, -0.9f, 0.0f,
+		  0.8f, -0.6f, 0.0f,
+		  0.3f, -0.6f, 0.0f,
+
+		  // Triángulo 3
+		   0.3f, -0.5f, 0.0f,
+		   0.8f, -0.5f, 0.0f,
+		   0.35f, -0.5f, 0.0f,
+
+		   // Triángulo 4
+			0.8f, -0.5f, 0.0f,
+			0.75f, -0.5f, 0.0f,
+			0.35f, -0.5f, 0.0f
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
 	glBindVertexArray(VAO);//asignar VAO
@@ -124,6 +151,9 @@ int main()
 		return 1;
 	}
 
+	srand(time(NULL));// linea para obtener una semilla diferente en cada ejecucion
+
+
 	//****  LAS SIGUIENTES 4 LÍNEAS SE COMENTAN EN DADO CASO DE QUE AL USUARIO NO LE FUNCIONE LA VENTANA Y PUEDA CONOCER LA VERSIÓN DE OPENGL QUE TIENE ****/
 
 	//Asignando variables de GLFW y propiedades de ventana
@@ -168,6 +198,7 @@ int main()
 	CrearTriangulo();
 	CompileShaders();
 
+	int tiempo = 0; //variable para controlar el cambio de color de la ventana
 
 	//Loop mientras no se cierra la ventana
 	while (!glfwWindowShouldClose(mainWindow))
@@ -176,28 +207,22 @@ int main()
 		glfwPollEvents();
 
 		//Limpiar la ventana
-		float color1=0.0f, color2=0.0f, color3=0.0f; //Ejercicio
+		float color1 = static_cast<float>(rand()) / RAND_MAX, color2 = static_cast<float>(rand()) / RAND_MAX, color3 = static_cast<float>(rand()) / RAND_MAX;
 
-		color1 = 1.0f, color2 = 0.0f, color3 = 0.0f;
-		glClearColor(color1, color2, color3, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		Sleep(1000);
-		color1 = 0.0f, color2 = 1.0f, color3 = 0.0f;
-		glClearColor(color1, color2, color3, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		Sleep(1000);
-		color1 = 0.0f, color2 = 0.0f, color3 = 1.0f;
-		glClearColor(color1, color2, color3, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		Sleep(1000);
+		switch (tiempo)
+		{
+		case 0: color1 = 1.0f; break; // Rojo
+		case 1: color2 = 1.0f; break; // Verde
+		case 2: color3 = 1.0f; break; // Azul
+		}
 
-		//glClearColor(color1,color2,color3,1.0f);
-	    //glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(color1,color2,color3,1.0f);
+	    glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,6);
+		glDrawArrays(GL_TRIANGLES,0,18);
 		glBindVertexArray(0);
 
 		glUseProgram(0);
@@ -205,6 +230,8 @@ int main()
 		glfwSwapBuffers(mainWindow);
 		 
 		//NO ESCRIBIR NINGUNA LÍNEA DESPUÉS DE glfwSwapBuffers(mainWindow); 
+		Sleep(2000);
+		tiempo = (tiempo + 1) % 3;
 	}
 
 
