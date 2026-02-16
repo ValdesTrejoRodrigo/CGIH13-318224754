@@ -28,7 +28,7 @@ static const char* fShader = "						\n\
 out vec4 color;										\n\
 void main()											\n\
 {													\n\
-	color = vec4(1.0f,1.0f,0.5f,1.0f);	 			\n\
+	color = vec4(0.0f,0.0f,0.0f,1.0f);	 			\n\
 }";
 
 
@@ -36,38 +36,48 @@ void main()											\n\
 void CrearTriangulo()
 {
 	GLfloat vertices[] = {
-		//Rombo
-		// Triángulo 1
-		-0.6f,  1.0f, 0.0f,   // Arriba
-		-1.0f,  0.6f, 0.0f,   // Izquierda
-		-0.2f,  0.6f, 0.0f,   // Derecha
+		// Letra R
 
-		// Triángulo 2
-		-1.0f,  0.6f, 0.0f,   // Izquierda
-		-0.2f,  0.6f, 0.0f,   // Derecha
-		-0.6f,  0.2f, 0.0f,   // Abajo
+		// Barra vertical izquierda
+		-0.9f,-0.9f,0.0f,
+		-0.8f,-0.9f,0.0f,
+		-0.9f,-0.5f,0.0f,
 
-		//  TRAPECIO 
+		-0.8f,-0.9f,0.0f,
+		-0.8f,-0.5f,0.0f,
+		-0.9f,-0.5f,0.0f,
 
-		// Triangulo1
-		 0.2f, -0.9f, 0.0f,
-		 0.9f, -0.9f, 0.0f,
-		 0.3f, -0.6f, 0.0f,
+		// Barra superior horizontal
+		-0.8f,-0.5f,0.0f,
+		-0.6f,-0.5f,0.0f,
+		-0.8f,-0.6f,0.0f,
 
-		 // Triángulo 2
-		  0.9f, -0.9f, 0.0f,
-		  0.8f, -0.6f, 0.0f,
-		  0.3f, -0.6f, 0.0f,
+		-0.6f,-0.5f,0.0f,
+		-0.6f,-0.6f,0.0f,
+		-0.8f,-0.6f,0.0f,
 
-		  // Triángulo 3
-		   0.3f, -0.5f, 0.0f,
-		   0.8f, -0.5f, 0.0f,
-		   0.35f, -0.5f, 0.0f,
+		// Barra media horizontal
+		-0.8f,-0.65f,0.0f,
+		-0.6f,-0.65f,0.0f,
+		-0.8f,-0.75f,0.0f,
 
-		   // Triángulo 4
-			0.8f, -0.5f, 0.0f,
-			0.75f, -0.5f, 0.0f,
-			0.35f, -0.5f, 0.0f
+		-0.6f,-0.65f,0.0f,
+		-0.6f,-0.75f,0.0f,
+		-0.8f,-0.75f,0.0f,
+
+		// Lado derecho superior
+		-0.6f,-0.5f,0.0f,
+		-0.5f,-0.5f,0.0f,
+		-0.6f,-0.75f,0.0f,
+
+		-0.5f,-0.5f,0.0f,
+		-0.5f,-0.75f,0.0f,
+		-0.6f,-0.75f,0.0f,
+
+		// Pierna diagonal inferior
+		-0.9f,-0.75f,0.0f,
+		-0.50f,-0.9f,0.0f,
+		-0.65f,-0.7f,0.0f,
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
 	glBindVertexArray(VAO);//asignar VAO
@@ -222,7 +232,7 @@ int main()
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,18);
+		glDrawArrays(GL_TRIANGLES,0,33);
 		glBindVertexArray(0);
 
 		glUseProgram(0);
