@@ -246,7 +246,6 @@ int main()
 	CrearTriangulo();
 	CompileShaders();
 
-	int tiempo = 0; //variable para controlar el cambio de color de la ventana
 
 	//Loop mientras no se cierra la ventana
 	while (!glfwWindowShouldClose(mainWindow))
@@ -256,13 +255,6 @@ int main()
 
 		//Limpiar la ventana
 		float color1 = static_cast<float>(rand()) / RAND_MAX, color2 = static_cast<float>(rand()) / RAND_MAX, color3 = static_cast<float>(rand()) / RAND_MAX;
-
-		switch (tiempo)
-		{
-		case 0: color1 = 1.0f; break; // Rojo
-		case 1: color2 = 1.0f; break; // Verde
-		case 2: color3 = 1.0f; break; // Azul
-		}
 
 		glClearColor(color1,color2,color3,1.0f);
 	    glClear(GL_COLOR_BUFFER_BIT);
@@ -279,7 +271,6 @@ int main()
 		 
 		//NO ESCRIBIR NINGUNA LÍNEA DESPUÉS DE glfwSwapBuffers(mainWindow); 
 		Sleep(2000);
-		tiempo = (tiempo + 1) % 3;
 	}
 
 
