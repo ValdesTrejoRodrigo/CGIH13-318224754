@@ -36,48 +36,86 @@ void main()											\n\
 void CrearTriangulo()
 {
 	GLfloat vertices[] = {
-		// Letra R
 
-		// Barra vertical izquierda
-		-0.9f,-0.9f,0.0f,
-		-0.8f,-0.9f,0.0f,
-		-0.9f,-0.5f,0.0f,
+	// Letra R
+	// Barra vertical izquierda
+	-0.9f,-0.9f,0.0f,
+	-0.8f,-0.9f,0.0f,
+	-0.9f,-0.5f,0.0f,
 
-		-0.8f,-0.9f,0.0f,
-		-0.8f,-0.5f,0.0f,
-		-0.9f,-0.5f,0.0f,
+	-0.8f,-0.9f,0.0f,
+	-0.8f,-0.5f,0.0f,
+	-0.9f,-0.5f,0.0f,
 
-		// Barra superior horizontal
-		-0.8f,-0.5f,0.0f,
-		-0.6f,-0.5f,0.0f,
-		-0.8f,-0.6f,0.0f,
+	// Barra superior horizontal
+	-0.8f,-0.5f,0.0f,
+	-0.6f,-0.5f,0.0f,
+	-0.8f,-0.6f,0.0f,
 
-		-0.6f,-0.5f,0.0f,
-		-0.6f,-0.6f,0.0f,
-		-0.8f,-0.6f,0.0f,
+	-0.6f,-0.5f,0.0f,
+	-0.6f,-0.6f,0.0f,
+	-0.8f,-0.6f,0.0f,
 
-		// Barra media horizontal
-		-0.8f,-0.65f,0.0f,
-		-0.6f,-0.65f,0.0f,
-		-0.8f,-0.75f,0.0f,
+	// Barra media horizontal
+	-0.8f,-0.65f,0.0f,
+	-0.6f,-0.65f,0.0f,
+	-0.8f,-0.75f,0.0f,
 
-		-0.6f,-0.65f,0.0f,
-		-0.6f,-0.75f,0.0f,
-		-0.8f,-0.75f,0.0f,
+	-0.6f,-0.65f,0.0f,
+	-0.6f,-0.75f,0.0f,
+	-0.8f,-0.75f,0.0f,
 
-		// Lado derecho superior
-		-0.6f,-0.5f,0.0f,
-		-0.5f,-0.5f,0.0f,
-		-0.6f,-0.75f,0.0f,
+	// Lado derecho superior
+	-0.6f,-0.5f,0.0f,
+	-0.5f,-0.5f,0.0f,
+	-0.6f,-0.75f,0.0f,
 
-		-0.5f,-0.5f,0.0f,
-		-0.5f,-0.75f,0.0f,
-		-0.6f,-0.75f,0.0f,
+	-0.5f,-0.5f,0.0f,
+	-0.5f,-0.75f,0.0f,
+	-0.6f,-0.75f,0.0f,
 
-		// Pierna diagonal inferior
-		-0.9f,-0.75f,0.0f,
-		-0.50f,-0.9f,0.0f,
-		-0.65f,-0.7f,0.0f,
+	// Pierna diagonal inferior
+	-0.9f,-0.75f,0.0f,
+	-0.50f,-0.9f,0.0f,
+	-0.65f,-0.7f,0.0f,
+	
+	//Letra V
+	// Lado izquierdo (barra inclinada)
+	-0.2f,  0.2f, 0.0f,
+	-0.1f,  0.2f, 0.0f,
+	0.0f, -0.2f, 0.0f,
+
+	-0.1f,  0.2f, 0.0f,
+	0.1f, -0.2f, 0.0f,
+	0.0f, -0.2f, 0.0f,
+
+	// Lado derecho (barra inclinada)
+	0.1f,  0.2f, 0.0f,
+	0.2f,  0.2f, 0.0f,
+	0.0f, -0.2f, 0.0f,
+
+	0.2f,  0.2f, 0.0f,
+	0.1f, -0.2f, 0.0f,
+	0.0f, -0.2f, 0.0f,
+	
+	//Letra T
+	// Barra superior
+	0.6f,0.9f,0.0f,
+	0.9f,0.9f,0.0f,
+	0.6f,0.8f,0.0f,
+
+	0.9f,0.9f,0.0f,
+	0.9f,0.8f,0.0f,
+	0.6f,0.8f,0.0f,
+
+	// Barra vertical
+	0.70f,0.8f,0.0f,
+	0.8f,0.8f,0.0f,
+	0.70f,0.5f,0.0f,
+
+	0.8f,0.8f,0.0f,
+	0.8f,0.5f,0.0f,
+	0.7f,0.5f,0.0f
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
 	glBindVertexArray(VAO);//asignar VAO
@@ -232,7 +270,7 @@ int main()
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,33);
+		glDrawArrays(GL_TRIANGLES,0,51);
 		glBindVertexArray(0);
 
 		glUseProgram(0);
