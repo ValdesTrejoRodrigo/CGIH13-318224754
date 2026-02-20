@@ -100,9 +100,9 @@ void CrearLetrasyFiguras()
 			-1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
 			1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
 			1.0f,	1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			/*1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
+			1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
 			-1.0f,  1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f,*/
+			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f
 			
 	};
 	MeshColor *letras = new MeshColor();
@@ -116,10 +116,21 @@ void CrearLetrasyFiguras()
 		0.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
 		
 	};
+	GLfloat vertices_trianguloVerde[] = {
+		//X			Y			Z			R		G		B
+		-1.0f,	-1.0f,		0.5f,			0.0f,	1.0f,	0.0f,
+		1.0f,	-1.0f,		0.5f,			0.0f,	1.0f,	0.0f,
+		0.0f,	1.0f,		0.5f,			0.0f,	1.0f,	0.0f,
+
+	};
 
 	MeshColor* triangulorojo = new MeshColor();
 	triangulorojo->CreateMeshColor(vertices_triangulorojo, 18);
 	meshColorList.push_back(triangulorojo);
+	MeshColor* trianguloVerde = new MeshColor();
+	triangulorojo->CreateMeshColor(vertices_trianguloVerde, 18);
+	meshColorList.push_back(trianguloVerde);
+
 
 	GLfloat vertices_cuadradoverde[] = {
 		//X			Y			Z			R		G		B
@@ -131,10 +142,36 @@ void CrearLetrasyFiguras()
 		-0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
 
 	};
+	GLfloat vertices_cuadradoCafe[] = {
+		//X			Y			Z			R		G		B
+		-0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		-0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		-0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+
+	};
+	GLfloat vertices_cuadradoRojo[] = {
+		//X			Y			Z			R		G		B
+		-0.5f,	-0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+		0.5f,	-0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+		0.5f,	0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+		-0.5f,	-0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+		0.5f,	0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+		-0.5f,	0.5f,		0.5f,			1.0f,	0.0f,	0.0f,
+
+	};
 
 	MeshColor* cuadradoverde = new MeshColor();
 	cuadradoverde->CreateMeshColor(vertices_cuadradoverde, 36);
 	meshColorList.push_back(cuadradoverde);
+	MeshColor* cuadradoCafe = new MeshColor();
+	cuadradoverde->CreateMeshColor(vertices_cuadradoCafe, 36);
+	meshColorList.push_back(cuadradoCafe);
+	MeshColor* cuadradoRojo = new MeshColor();
+	cuadradoverde->CreateMeshColor(vertices_cuadradoRojo, 36);
+	meshColorList.push_back(cuadradoRojo);
 
 
 }
@@ -155,17 +192,17 @@ void CreateShaders()
 
 int main()
 {
-	mainWindow = Window(800, 600);
+	mainWindow = Window(800, 800);
 	mainWindow.Initialise();
-	CreaPiramide(); //índice 0 en MeshList
-	CrearCubo();//índice 1 en MeshList
+//	CreaPiramide(); //índice 0 en MeshList
+//	CrearCubo();//índice 1 en MeshList
 	CrearLetrasyFiguras(); //usa MeshColor, índices en MeshColorList
 	CreateShaders();
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
 	//Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
-	glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
-	//glm::mat4 projection = glm::perspective(glm::radians(60.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
+	//glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(60.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
 	
 	//Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
 	glm::mat4 model(1.0); //fuera del while se usa para inicializar la matriz con una identidad
@@ -193,18 +230,36 @@ int main()
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[0]->RenderMeshColor();
 
+		//agregar cuadrado verde
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(5.0f, 0.0f, -0.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshColorList[1]->RenderMeshColor();
+		//agregar cuadrado verde
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 5.0f, -0.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshColorList[2]->RenderMeshColor();
+	/*
 		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
 		shaderList[0].useShader(); 
 		uniformModel = shaderList[0].getModelLocation();
 		uniformProjection = shaderList[0].getProjectLocation();
-		angulo += 0.01;
+		angulo += 0.05;
 		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::rotate(model, glm::radians(angulo), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		meshList[0]->RenderMesh();
+		//cubo
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(1.75f, 0.0f, -5.0f));
+		model = glm::rotate(model, glm::radians(angulo), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshList[1]->RenderMesh();
-
+	*/
 		glUseProgram(0);
 		mainWindow.swapBuffers();
 
