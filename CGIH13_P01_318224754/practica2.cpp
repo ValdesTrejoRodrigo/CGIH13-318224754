@@ -120,7 +120,7 @@ void CrearLetrasyFiguras()
 		//X			Y			Z			R		G		B
 		-1.0f,	-1.0f,		0.5f,			0.13f,	0.37f,	0.13f,
 		1.0f,	-1.0f,		0.5f,			0.13f,	0.37f,	0.13f,
-		0.0f,	1.0f,		0.5f,			0.13f,	0.37f,	0.13f,
+		0.0f,	1.65f,		0.5f,			0.13f,	0.37f,	0.13f,
 
 	};
 
@@ -192,7 +192,7 @@ void CreateShaders()
 
 int main()
 {
-	mainWindow = Window(800, 800);
+	mainWindow = Window(1000, 800);
 	mainWindow.Initialise();
 //	CreaPiramide(); //índice 0 en MeshList
 //	CrearCubo();//índice 1 en MeshList
@@ -227,19 +227,20 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.55f, -4.0f));
 		model = glm::rotate(model, glm::radians(angulo), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.75f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[0]->RenderMeshColor();
 		//triangulo verde oscuro izq
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-3.55f, -2.33f, -5.0f));
+		model = glm::translate(model, glm::vec3(-3.55f, -1.65f, -4.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, -5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[2]->RenderMeshColor();
 		//triangulo verde oscuro der
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(3.55f, -2.33f, -5.0f));
+		model = glm::translate(model, glm::vec3(3.55f, -1.65f, -4.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, -5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
@@ -265,14 +266,14 @@ int main()
 
 		// Cuadrado café (índice 4) tronco izq
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-2.35f, -2.5f, -5.0f));
+		model = glm::translate(model, glm::vec3(-2.2f, -2.0f, -4.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.75f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshColorList[4]->RenderMeshColor();
 
 		// Cuadrado café (índice 4) tronco der
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(2.35f, -2.5f, -5.0f));
+		model = glm::translate(model, glm::vec3(2.2f, -2.0f, -4.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.75f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshColorList[4]->RenderMeshColor();
