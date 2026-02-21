@@ -100,9 +100,9 @@ void CrearLetrasyFiguras()
 			-1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
 			1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
 			1.0f,	1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
+			/*1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
 			-1.0f,  1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f
+			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f*/
 			
 	};
 	MeshColor *letras = new MeshColor();
@@ -128,7 +128,7 @@ void CrearLetrasyFiguras()
 	triangulorojo->CreateMeshColor(vertices_triangulorojo, 18);
 	meshColorList.push_back(triangulorojo);
 	MeshColor* trianguloVerde = new MeshColor();
-	triangulorojo->CreateMeshColor(vertices_trianguloVerde, 18);
+	trianguloVerde->CreateMeshColor(vertices_trianguloVerde, 18);
 	meshColorList.push_back(trianguloVerde);
 
 
@@ -144,12 +144,12 @@ void CrearLetrasyFiguras()
 	};
 	GLfloat vertices_cuadradoCafe[] = {
 		//X			Y			Z			R		G		B
-		-0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
-		0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
-		0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
-		-0.5f,	-0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
-		0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
-		-0.5f,	0.5f,		0.5f,			0.0f,	1.0f,	0.0f,
+		-0.5f,	-0.5f,		0.5f,			0.478, 0.255, 0.067,
+		0.5f,	-0.5f,		0.5f,			0.478, 0.255, 0.067,
+		0.5f,	0.5f,		0.5f,			0.478, 0.255, 0.067,
+		-0.5f,	-0.5f,		0.5f,			0.478, 0.255, 0.067,
+		0.5f,	0.5f,		0.5f,			0.478, 0.255, 0.067,
+		-0.5f,	0.5f,		0.5f,			0.478, 0.255, 0.067
 
 	};
 	GLfloat vertices_cuadradoRojo[] = {
@@ -167,10 +167,10 @@ void CrearLetrasyFiguras()
 	cuadradoverde->CreateMeshColor(vertices_cuadradoverde, 36);
 	meshColorList.push_back(cuadradoverde);
 	MeshColor* cuadradoCafe = new MeshColor();
-	cuadradoverde->CreateMeshColor(vertices_cuadradoCafe, 36);
+	cuadradoCafe->CreateMeshColor(vertices_cuadradoCafe, 36);
 	meshColorList.push_back(cuadradoCafe);
 	MeshColor* cuadradoRojo = new MeshColor();
-	cuadradoverde->CreateMeshColor(vertices_cuadradoRojo, 36);
+	cuadradoRojo->CreateMeshColor(vertices_cuadradoRojo, 36);
 	meshColorList.push_back(cuadradoRojo);
 
 
@@ -230,16 +230,38 @@ int main()
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[0]->RenderMeshColor();
 
-		//agregar cuadrado verde
+		// Cuadrado verde (índice 3)  //Puerta
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(5.0f, 0.0f, -0.3f));
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, -4.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		meshColorList[1]->RenderMeshColor();
-		//agregar cuadrado verde
+		meshColorList[3]->RenderMeshColor();
+		//ventana izq
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 5.0f, -0.3f));
+		model = glm::translate(model, glm::vec3(-0.8f, 0.15f, -4.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		meshColorList[2]->RenderMeshColor();
+		meshColorList[3]->RenderMeshColor();
+		//ventana der
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.8f, 0.15f, -4.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshColorList[3]->RenderMeshColor();
+
+		// Cuadrado café (índice 4)
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-2.35f, -2.5f, -5.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.75f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshColorList[4]->RenderMeshColor();
+
+		// Cuadrado rojo (índice 5)
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -0.75f, -4.0f));
+		model = glm::scale(model, glm::vec3(3.f, 3.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshColorList[5]->RenderMeshColor();
 	/*
 		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
 		shaderList[0].useShader(); 
