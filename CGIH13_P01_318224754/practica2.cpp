@@ -26,6 +26,13 @@ static const char* vShaderColor = "shaders/shadercolor.vert";
 static const char* fShaderColor = "shaders/shadercolor.frag";
 //shaders nuevos se crearían acá
 
+//Shader de colores para la casa
+static const char* fShaderRojo = "shaders/shaderRojo.frag";
+static const char* fShaderVerde = "shaders/shaderVerde.frag";
+static const char* fShaderCafe = "shaders/shaderCafe.frag";
+static const char* fShaderVerdeOscuro = "shaders/shaderVerdeOscuro.frag";
+static const char* fShaderAzul = "shaders/shaderAzul.frag";
+
 float angulo = 135.0f;
 
 //color café en RGB : 0.478, 0.255, 0.067
@@ -266,6 +273,27 @@ void CreateShaders()
 	Shader *shader2 = new Shader();//shader para usar color como parte del VAO: letras 
 	shader2->CreateFromFiles(vShaderColor, fShaderColor);
 	shaderList.push_back(*shader2);
+
+	//shader de colores casa en 3d 
+	Shader *shaderRojo = new Shader(); //2
+	shaderRojo->CreateFromFiles(vShader, fShaderRojo);
+	shaderList.push_back(*shaderRojo);
+
+	Shader *shaderVerde = new Shader();//3
+	shaderVerde->CreateFromFiles(vShader, fShaderVerde);
+	shaderList.push_back(*shaderVerde);
+
+	Shader *shaderCafe = new Shader();//4
+	shaderCafe->CreateFromFiles(vShader, fShaderCafe);
+	shaderList.push_back(*shaderCafe);
+
+	Shader *shaderVerdeOscuro = new Shader();//5
+	shaderVerdeOscuro->CreateFromFiles(vShader, fShaderVerdeOscuro);
+	shaderList.push_back(*shaderVerdeOscuro);
+
+	Shader *shaderAzul = new Shader();//6
+	shaderAzul->CreateFromFiles(vShader, fShaderAzul);
+	shaderList.push_back(*shaderAzul);
 }
 
 
@@ -312,12 +340,15 @@ int main()
 */
 		//Parte 2 Practica02
 			//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
-		shaderList[0].useShader();
-		uniformModel = shaderList[0].getModelLocation();
-		uniformProjection = shaderList[0].getProjectLocation();
-		angulo += 0.05;
-		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
-		
+	//	shaderList[0].useShader();
+	//  uniformModel = shaderList[0].getModelLocation();
+	//	uniformProjection = shaderList[0].getProjectLocation();
+	//	angulo += 0.05;
+
+		//techo
+		shaderList[6].useShader();
+		uniformModel = shaderList[6].getModelLocation();
+		uniformProjection = shaderList[6].getProjectLocation();
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.3f, 1.8f, 1.0f));
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -5.0f));
@@ -328,6 +359,9 @@ int main()
 
 		//hojas arboles
 		//izq
+		shaderList[5].useShader();
+		uniformModel = shaderList[5].getModelLocation();
+		uniformProjection = shaderList[5].getProjectLocation();
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(0.4f, 1.2f, 0.4f));
 		model = glm::translate(model, glm::vec3(-1.95f, -0.5675f, -6.0f));
@@ -343,6 +377,9 @@ int main()
 		meshList[0]->RenderMesh();
 		
 		//cubo Rojo paredes_casa
+		shaderList[2].useShader();
+		uniformModel = shaderList[2].getModelLocation();
+		uniformProjection = shaderList[2].getProjectLocation();
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.1f, 1.1f, 1.1f));
 		model = glm::translate(model, glm::vec3(0.0f, -0.5, -5.0f));
@@ -351,6 +388,9 @@ int main()
 		meshList[1]->RenderMesh();
 		
 		//ventanas
+		shaderList[3].useShader();
+		uniformModel = shaderList[3].getModelLocation();
+		uniformProjection = shaderList[3].getProjectLocation();
 		//izq
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
@@ -375,6 +415,9 @@ int main()
 		meshList[1]->RenderMesh();
 
 		//troncos de arbol
+		shaderList[4].useShader();
+		uniformModel = shaderList[4].getModelLocation();
+		uniformProjection = shaderList[4].getProjectLocation();
 		//izq
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(0.3f, 0.4f, 0.3f));
