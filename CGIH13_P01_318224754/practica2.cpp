@@ -97,16 +97,94 @@ void CrearLetrasyFiguras()
 {
 	GLfloat vertices_letras[] = {	
 			//X			Y			Z			R		G		B
-			-1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			1.0f,	1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			/*1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,  1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f*/
+
+	// Letra R
+	// Barra vertical izquierda
+	-0.9f,-0.9f,0.0f,                         0.58f,    0.15f,   0.82f,
+	-0.8f,-0.9f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.9f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	-0.8f,-0.9f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.8f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.9f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	// Barra superior horizontal
+	-0.8f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.8f,-0.6f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	-0.6f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.6f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.8f,-0.6f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	// Barra media horizontal
+	-0.8f,-0.65f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.65f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.8f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	-0.6f,-0.65f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.8f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	// Lado derecho superior
+	-0.6f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.5f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	-0.5f,-0.5f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.5f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+	-0.6f,-0.75f,0.0f,                        0.58f,    0.15f,   0.82f,
+
+	// Pierna diagonal inferior
+	-0.7f, -0.75f, 0.0f,                     0.58f, 0.15f, 0.82f,
+	-0.6f, -0.75f, 0.0f,                     0.58f, 0.15f, 0.82f,
+	-0.6f, -0.9f,  0.0f,                     0.58f, 0.15f, 0.82f,
+	// Triángulo 2
+	-0.6f, -0.75f, 0.0f,                     0.58f, 0.15f, 0.82f,
+	-0.5f, -0.9f,  0.0f,                     0.58f, 0.15f, 0.82f,
+	-0.6f, -0.9f,  0.0f,                     0.58f, 0.15f, 0.82f,
+
+		//Letra V
+	// Lado izquierdo (barra inclinada)
+	-0.2f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	-0.1f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.0f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+
+	-0.1f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.1f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.0f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+
+	// Lado derecho (barra inclinada)
+	0.1f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.2f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.0f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+
+	0.2f,  0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.1f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+	0.0f, -0.2f, 0.0f,                       0.91f,     0.45f,    0.08f,
+
+	//Letra T
+	// Barra superior
+	0.6f,0.9f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.9f,0.9f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.6f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+
+	0.9f,0.9f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.9f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.6f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+
+	// Barra vertical
+	0.70f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.8f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.70f,0.5f,0.0f,                         0.10f,      0.75f,     0.68f,
+
+	0.8f,0.8f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.8f,0.5f,0.0f,                         0.10f,      0.75f,     0.68f,
+	0.7f,0.5f,0.0f,                         0.10f,      0.75f,     0.68f
 			
 	};
 	MeshColor *letras = new MeshColor();
-	letras->CreateMeshColor(vertices_letras,18);
+	letras->CreateMeshColor(vertices_letras,324);
 	meshColorList.push_back(letras);
 
 	GLfloat vertices_triangulorojo[] = {
@@ -222,6 +300,16 @@ int main()
 		uniformModel = shaderList[1].getModelLocation();
 		uniformProjection = shaderList[1].getProjectLocation();
 		
+		//LETRAS DE COLORES
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		meshColorList[0]->RenderMeshColor();
+
+		/* //EJERCICIO2
+
 		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
 		//triangulo azul techo
 		model = glm::mat4(1.0);
@@ -283,26 +371,28 @@ int main()
 		model = glm::scale(model, glm::vec3(3.f, 3.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshColorList[5]->RenderMeshColor();
-	/*
-		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
-		shaderList[0].useShader(); 
-		uniformModel = shaderList[0].getModelLocation();
-		uniformProjection = shaderList[0].getProjectLocation();
-		angulo += 0.05;
-		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::rotate(model, glm::radians(angulo), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[0]->RenderMesh();
-		//cubo
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(1.75f, 0.0f, -5.0f));
-		model = glm::rotate(model, glm::radians(angulo), glm::vec3(1.0f, 0.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		meshList[1]->RenderMesh();
-	*/
+
+*/
+/*
+	//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
+	shaderList[0].useShader();
+	uniformModel = shaderList[0].getModelLocation();
+	uniformProjection = shaderList[0].getProjectLocation();
+	angulo += 0.05;
+	//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+	model = glm::mat4(1.0);
+	model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+	model = glm::rotate(model, glm::radians(angulo), glm::vec3(0.0f, 1.0f, 0.0f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+	glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+	meshList[0]->RenderMesh();
+	//cubo
+	model = glm::mat4(1.0);
+	model = glm::translate(model, glm::vec3(1.75f, 0.0f, -5.0f));
+	model = glm::rotate(model, glm::radians(angulo), glm::vec3(1.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	meshList[1]->RenderMesh();
+*/
 		glUseProgram(0);
 		mainWindow.swapBuffers();
 
