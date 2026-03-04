@@ -464,6 +464,101 @@ int main()
 		renderCara(glm::vec3(0.0f, 0.0f, 1.0f), piezasAzules, 9);
 		renderCara(glm::vec3(0.0f, 1.0f, 0.0f), piezasVerdes, 9);
 
+/*
+//cara roja
+		// Color y view se setean una sola vez fuera del loop
+		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+
+		// Loop que dibuja todas las piezas
+		for (int i = 0; i < 9; i++)
+		{
+			model = glm::mat4(1.0);
+			model = glm::scale(model, piezasRojas[i].escala);
+			model = glm::translate(model, piezasRojas[i].posicion);
+
+			if (piezasRojas[i].rotZ != 0.0f)
+				model = glm::rotate(model, piezasRojas[i].rotZ * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+			if (piezasRojas[i].rotX != 0.0f)
+				model = glm::rotate(model, piezasRojas[i].rotX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+
+			glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+			meshList[1]->RenderMesh();
+		}
+
+		//cara amarilla
+		color = glm::vec3(1.0f, 1.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+
+		// Loop que dibuja todas las piezas
+		for (int i = 0; i < 9; i++)
+		{
+			model = glm::mat4(1.0);
+			model = glm::scale(model, piezasAmarillas[i].escala);
+			model = glm::translate(model, piezasAmarillas[i].posicion);
+
+			if (piezasAmarillas[i].rotY != 0.0f)
+				model = glm::rotate(model, piezasAmarillas[i].rotY * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+
+			glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+			meshList[1]->RenderMesh();
+		}
+
+		//cara azul
+		color = glm::vec3(0.0f, 0.0f, 1.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+
+		// Loop que dibuja todas las piezas
+		for (int i = 0; i < 9; i++)
+		{
+			model = glm::mat4(1.0);
+			model = glm::scale(model, piezasAzules[i].escala);
+			model = glm::translate(model, piezasAzules[i].posicion);
+
+			if (piezasAzules[i].rotZ != 0.0f)
+				model = glm::rotate(model, piezasAzules[i].rotZ * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+			if (piezasAzules[i].rotX != 0.0f)
+				model = glm::rotate(model, piezasAzules[i].rotX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+			if (piezasAzules[i].rotY != 0.0f)
+				model = glm::rotate(model, piezasAzules[i].rotY * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		
+
+			glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+			meshList[1]->RenderMesh();
+		}
+
+		//cara verde
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+		
+		// Loop que dibuja todas las piezas
+		for (int i = 0; i < 9; i++)
+		{
+			model = glm::mat4(1.0);
+			model = glm::scale(model, piezasVerdes[i].escala);
+			model = glm::translate(model, piezasVerdes [i].posicion);
+
+			if (piezasVerdes [i].rotZ != 0.0f)
+				model = glm::rotate(model, piezasVerdes [i].rotZ * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+			if (piezasVerdes [i].rotX != 0.0f)
+				model = glm::rotate(model, piezasVerdes [i].rotX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+			if (piezasVerdes [i].rotY != 0.0f)
+				model = glm::rotate(model, piezasVerdes [i].rotY * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+
+
+			glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+			meshList[1]->RenderMesh();
+		}
+*/
+		
 		//casa 3D ejercicio
 		
 		//meshList[0]->RenderMeshGeometry(); //dibuja las figuras geométricas cilindro, cono, pirámide base cuadrangular
@@ -639,3 +734,4 @@ int main()
 	
 
 		
+
